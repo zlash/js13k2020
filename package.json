@@ -1,0 +1,46 @@
+{
+  "name": "js13k2020",
+  "scripts": {
+    "entry:build": "rm -rf dist/js13kEntry/prod && parcel build --no-cache --no-source-maps --dist-dir=dist/js13kEntry/prod src/js13kEntry/index.html && tools/processDist.bash ",
+    "entry:start": "tools/start.bash js13kEntry",
+    "entry:serve": "yarn entry:build && http-server dist/js13kEntry/prod",
+    "entry:validate": "tools/bot_check.py --category=desktop dist/js13kEntry/prod/bundle.zip",
+    "proto:build": "rm -rf dist/proto/prod && parcel build --no-cache --no-source-maps --dist-dir=dist/proto/prod src/proto/index.html",
+    "proto:start": "rm -rf dist/proto/dev && parcel serve --cache-dir=.parcel-cache/proto/dev --dist-dir=dist/proto/dev src/proto/index.html",
+    "map-compiler:build": "parcel build --no-minify  --no-cache --target=node --dist-dir=dist/tools tools/compileMap.ts",
+    "textures-compiler:build": "parcel build --no-minify  --no-cache --target=node --dist-dir=dist/tools tools/compileTextures.ts"
+  },
+  "targets": {
+    "node": {
+      "context": "node",
+      "engines": {
+        "node": "12.0"
+      },
+      "includeNodeModules": true
+    }
+  },
+  "version": "0.1.5",
+  "description": "JS13K2020 Entry",
+  "author": "Miguel Ángel Pérez Martínez",
+  "license": "Not yet decided",
+  "private": true,
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "devDependencies": {
+    "@types/node": "^14.6.2",
+    "gulp": "4.0.2",
+    "gulp-cli": "2.2.0",
+    "http-server": "^0.12.3",
+    "parcel": "^2.0.0-beta.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "pixi.js": "^5.3.3"
+  },
+  "@parcel/transformer-js": {
+    "inlineEnvironment": [
+      "NODE_ENV"
+    ]
+  }
+}

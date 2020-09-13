@@ -1,0 +1,19 @@
+{
+    "compress": {
+        "passes": 10,
+        "ecma": 2020,
+        "pure_funcs": ["console.log"],
+        "unsafe_proto": true,
+        "unsafe_arrows": true,
+        "unsafe_math": true,
+        "pure_getters": true,
+    },
+    "mangle": {
+        "properties": {
+            "undeclared": true,
+            "keep_quoted": true,
+            "reserved":["bindBufferBase","uniformBlockBinding","getUniformBlockIndex","vertexAttribDivisor","vertexAttribPointer","enableVertexAttribArray","drawArraysInstanced","drawBuffers"],
+        },
+    },
+    "toplevel": true
+}
